@@ -33,33 +33,53 @@ var gallery = {
 			// loader.hide();
 		});
 
+
+
 	}
 };
 
 var slider = {
 
 	el: document.querySelector('.slider'),
-	galleryImages: document.querySelectorAll('.gallery-img'),
+	galleryItems: document.querySelectorAll('.grid-item'),
 	image: document.querySelector('.slider-img'),
-	slidesLength: document.querySelectorAll('.gallery-img').length,
+	title: document.querySelector('.slider-title'),
+	// slidesLength: document.querySelectorAll('.gallery-img').length,
 	nextButton: document.querySelector('.next-button'),
 	prevButton: document.querySelector('.prev-button'),
+	closeButton: document.querySelector('.close-button'),
 	currentIndex: 0,
 
-	init: function() {
+	init: function(imageData) {
 		var _this = this;
-		this.nextButton.addEventListener('click', function() {
+		this.nextButton.addEventListener('click', function(e) {
 			_this.nextSlide(_this);
+			e.preventDefault();
+			e.stopPropagation();
 		});
-		this.prevButton.addEventListener('click', function() {
+		this.prevButton.addEventListener('click', function(e) {
 			_this.prevSlide(_this);
+			e.preventDefault();
+			e.stopPropagation();
 		});
+		this.closeButton.addEventListener('click', function(e) {
+			_this.close();
+		});
+		this.imageData = imageData;
+		this.slidesLength = imageData.length;
 	},
 
 	open: function(clickedIndex) {
 		this.el.classList.add('active');
+		document.body.classList.add('noscroll');
 		this.currentIndex = clickedIndex;
-		this.image.src = this.galleryImages[this.currentIndex].src;
+
+		this.image.src = this.imageData[this.currentIndex].urls.regular;
+	},
+
+	close: function() {
+		this.el.classList.remove('active');
+		document.body.classList.remove('noscroll');
 	},
 
 	nextSlide: function(_this) {
@@ -68,45 +88,67 @@ var slider = {
 		} else {
 			_this.currentIndex++;
 		}
-		_this.image.src = _this.galleryImages[_this.currentIndex].src;
+		_this.image.src = _this.imageData[_this.currentIndex].urls.regular;
 	},
 
 	prevSlide: function(_this) {
 		if (_this.currentIndex > 0) {
 			_this.currentIndex--;
-		} else if(_this.currentIndex === 0){
+		} else if (_this.currentIndex === 0) {
 			_this.currentIndex = (_this.slidesLength - 1);
 		}
-
-		_this.image.src = _this.galleryImages[_this.currentIndex].src;
+		_this.image.src = _this.imageData[_this.currentIndex].urls.regular;
 	},
 
 
 };
 
 var api = {
-	getData: function() {
-
-		var apiKey = "zzk9ce3nsrs6y44wbv5w6usk";
-
-		var appendApiKeyHeader = function(xhr) {
-			xhr.setRequestHeader('Api-Key', apiKey);
-		};
-
-		fetch('https://connect.gettyimages.com/v3/search?phrase=dog', {
+	getimages: function() {
+		fetch('https://api.unsplash.com/photos?page=1&per_page=30', {
 			method: 'GET',
-			beforeSend: appendApiKeyHeader,
 			headers: new Headers({
-				'Api-Key': 'apiKey'
+				'Authorization': 'Client-ID '+'780db5e9f6e858d86f7d3cb689167f1fae91566545f3baa4e58a8ce692e6d127',
 			})
 		}).then(function(response) {
 			return response.json();
-		}).then(function(myJson) {
-			console.log(myJson);
+		}).then(function(imageData) {
+			console.log(imageData);
+			render.images(imageData);
+		}).catch(function(error) {
+			console.log(error);
 		});
 
 	}
 };
 
-gallery.init();
-slider.init();
+var render = {
+	images: function(imageData) {
+		var grid = document.querySelector('.grid');
+
+		for (var i = 0; i < imageData.length; ++i) {
+			//Grid-items
+			var item = document.createElement('a');
+			item.href = '#';
+			item.classList.add('grid-item');
+			grid.appendChild(item);
+			// Images
+			var img = document.createElement('img');
+			img.src = imageData[i].urls.regular;
+			img.alt = imageData[i].title;
+			item.appendChild(img);
+			//Content
+			var section = document.createElement('section');
+			section.classList.add('gallery-content');
+			item.appendChild(section);
+			var title = document.createElement('h3');
+			title.textContent = imageData[i].user.name;
+			section.appendChild(title);
+
+		}
+		gallery.init();
+		slider.init(imageData);
+	}
+};
+
+api.getimages();
