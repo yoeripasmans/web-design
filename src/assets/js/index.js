@@ -2,26 +2,21 @@ var gallery = {
 	init: function() {
 
 		var grid = document.querySelector('.grid');
-		var gridItems = document.querySelectorAll('.grid-item');
-
-		//Create gridsizer
-		var gridSizer = document.createElement('div');
-		gridSizer.classList.add("grid-sizer");
-		grid.appendChild(gridSizer);
-
-		for (let i = 0; i < gridItems.length; i++) {
-			gridItems[i].addEventListener('click', function(e) {
-				slider.open(i);
-				e.preventDefault();
-			});
-		}
 
 		var msnry = new Masonry(grid, {
 			itemSelector: '.grid-item',
 			columnWidth: '.grid-sizer',
 			gutter: 10,
 			percentPosition: true,
-			horizontalOrder: true
+			horizontalOrder: true,
+			visibleStyle: {
+				transform: 'translateY(0)',
+				opacity: 1
+			},
+			hiddenStyle: {
+				transform: 'translateY(100px)',
+				opacity: 0
+			},
 		});
 
 		imagesLoaded(grid).on('progress', function() {
@@ -31,9 +26,17 @@ var gallery = {
 		imagesLoaded(grid).on('done', function() {
 			// layout Masonry after each image loads
 			// loader.hide();
+			infiniteScroll.init();
 		});
 
-
+		// initial items reveal
+		// imagesLoaded(grid, function() {
+		// 	grid.classList.remove('unloaded');
+		// 	msnry.options.itemSelector = '.grid-item';
+		// 	var items = grid.querySelectorAll('.grid-item');
+		// 	msnry.appended(items);
+		// 		infiniteScroll.init();
+		// });
 
 	}
 };
@@ -44,7 +47,6 @@ var slider = {
 	galleryItems: document.querySelectorAll('.grid-item'),
 	image: document.querySelector('.slider-img'),
 	title: document.querySelector('.slider-title'),
-	// slidesLength: document.querySelectorAll('.gallery-img').length,
 	nextButton: document.querySelector('.next-button'),
 	prevButton: document.querySelector('.prev-button'),
 	closeButton: document.querySelector('.close-button'),
@@ -73,7 +75,6 @@ var slider = {
 		this.el.classList.add('active');
 		document.body.classList.add('noscroll');
 		this.currentIndex = clickedIndex;
-
 		this.image.src = this.imageData[this.currentIndex].urls.regular;
 	},
 
@@ -104,37 +105,54 @@ var slider = {
 };
 
 var api = {
-	getimages: function() {
-		fetch('https://api.unsplash.com/photos?page=1&per_page=30', {
+	data: [],
+	page: 1,
+	getImages: function() {
+		var _this = this;
+		fetch("https://api.unsplash.com/photos?page=" + _this.page + "&per_page=20", {
 			method: 'GET',
 			headers: new Headers({
-				'Authorization': 'Client-ID '+'780db5e9f6e858d86f7d3cb689167f1fae91566545f3baa4e58a8ce692e6d127',
+				'Authorization': 'Client-ID ' + '780db5e9f6e858d86f7d3cb689167f1fae91566545f3baa4e58a8ce692e6d127',
 			})
 		}).then(function(response) {
 			return response.json();
 		}).then(function(imageData) {
-			console.log(imageData);
-			render.images(imageData);
+			for (var i = 0; i < imageData.length; i++) {
+				api.data.push(imageData[i]);
+			}
+			render.images(api.data);
+			gallery.init();
+			slider.init(api.data);
 		}).catch(function(error) {
 			console.log(error);
 		});
 
-	}
+	},
 };
 
 var render = {
 	images: function(imageData) {
+
 		var grid = document.querySelector('.grid');
 
-		for (var i = 0; i < imageData.length; ++i) {
+		//Create gridsizer
+		var gridSizer = document.createElement('div');
+		gridSizer.classList.add("grid-sizer");
+		grid.appendChild(gridSizer);
+
+		for (let i = 0; i < imageData.length; ++i) {
 			//Grid-items
 			var item = document.createElement('a');
 			item.href = '#';
 			item.classList.add('grid-item');
+			item.addEventListener('click', function(e) {
+				slider.open(i);
+				e.preventDefault();
+			});
 			grid.appendChild(item);
 			// Images
 			var img = document.createElement('img');
-			img.src = imageData[i].urls.regular;
+			img.src = imageData[i].urls.small;
 			img.alt = imageData[i].title;
 			item.appendChild(img);
 			//Content
@@ -144,11 +162,34 @@ var render = {
 			var title = document.createElement('h3');
 			title.textContent = imageData[i].user.name;
 			section.appendChild(title);
-
 		}
-		gallery.init();
-		slider.init(imageData);
 	}
 };
 
-api.getimages();
+var infiniteScroll = {
+	init: function() {
+		var grid = document.querySelector('.grid');
+		var pageHeight = document.documentElement.clientHeight;
+		var scrollPosition;
+		var gridHeight = grid.offsetHeight;
+
+		function scroll() {
+			scrollPosition = window.pageYOffset;
+			if ((gridHeight - pageHeight - scrollPosition) < 500) {
+				api.page++;
+	
+				api.getImages();
+				window.removeEventListener('scroll', scroll);
+
+			}
+		}
+
+		window.addEventListener('scroll', scroll);
+
+
+
+	},
+
+};
+
+api.getImages();
