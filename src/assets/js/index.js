@@ -20,23 +20,13 @@ var gallery = {
 		});
 
 		imagesLoaded(grid).on('progress', function() {
-			// loader.show();
+
 			msnry.layout();
 		});
 		imagesLoaded(grid).on('done', function() {
 			// layout Masonry after each image loads
-			// loader.hide();
 			infiniteScroll.init();
 		});
-
-		// initial items reveal
-		// imagesLoaded(grid, function() {
-		// 	grid.classList.remove('unloaded');
-		// 	msnry.options.itemSelector = '.grid-item';
-		// 	var items = grid.querySelectorAll('.grid-item');
-		// 	msnry.appended(items);
-		// 		infiniteScroll.init();
-		// });
 
 	}
 };
@@ -51,24 +41,55 @@ var slider = {
 	prevButton: document.querySelector('.prev-button'),
 	closeButton: document.querySelector('.close-button'),
 	currentIndex: 0,
+	userImg: document.querySelector('.slider-profile-img'),
+	userName: document.querySelector('.slider-user-name'),
+	date: document.querySelector('.slider-date'),
+	indexElement: document.querySelector('.img-index'),
+	startButton: document.querySelector('.start-slideshow'),
+	stopButton: document.querySelector('.stop-slideshow'),
+	likeButton: document.querySelector('.like-amount'),
 
 	init: function(imageData) {
+		this.imageData = imageData;
+		this.slidesLength = imageData.length;
+	},
+
+	events: function() {
 		var _this = this;
+		var sliderContent = document.querySelector('.slider-content');
 		this.nextButton.addEventListener('click', function(e) {
-			_this.nextSlide(_this);
+			_this.nextSlide();
 			e.preventDefault();
 			e.stopPropagation();
 		});
 		this.prevButton.addEventListener('click', function(e) {
-			_this.prevSlide(_this);
+			_this.prevSlide();
 			e.preventDefault();
 			e.stopPropagation();
 		});
 		this.closeButton.addEventListener('click', function(e) {
 			_this.close();
 		});
-		this.imageData = imageData;
-		this.slidesLength = imageData.length;
+		this.el.addEventListener('click', function(e) {
+			if (!sliderContent.contains(e.target)) {
+				_this.close();
+			}
+		});
+		window.addEventListener("keydown", function(e) {
+			switch (e.key) {
+				case 'ArrowRight':
+					_this.nextSlide();
+					break;
+				case 'ArrowLeft':
+					_this.prevSlide();
+					break;
+				case 'Escape':
+					_this.close();
+			}
+
+		});
+		this.startButton.addEventListener('click', _this.startSlideshow);
+		this.stopButton.addEventListener('click', _this.stopSlideshow);
 	},
 
 	open: function(clickedIndex) {
@@ -76,30 +97,60 @@ var slider = {
 		document.body.classList.add('noscroll');
 		this.currentIndex = clickedIndex;
 		this.image.src = this.imageData[this.currentIndex].urls.regular;
+		this.userImg.src = this.imageData[this.currentIndex].user.profile_image.small;
+		this.userName.textContent = this.imageData[this.currentIndex].user.name;
+		this.date.textContent = "Added on: " + this.imageData[this.currentIndex].created_at.slice(0, 10);
+		this.indexElement.textContent = (this.currentIndex + 1) + "/" + this.slidesLength;
+		this.likeButton.textContent = this.imageData[this.currentIndex].likes;
 	},
 
 	close: function() {
 		this.el.classList.remove('active');
 		document.body.classList.remove('noscroll');
+		this.stopSlideshow();
 	},
 
-	nextSlide: function(_this) {
-		if (_this.currentIndex >= (_this.slidesLength - 1)) {
-			_this.currentIndex = 0;
+	nextSlide: function() {
+		if (slider.currentIndex >= (slider.slidesLength - 1)) {
+			slider.currentIndex = 0;
 		} else {
-			_this.currentIndex++;
+			slider.currentIndex++;
 		}
-		_this.image.src = _this.imageData[_this.currentIndex].urls.regular;
+		slider.image.src = slider.imageData[slider.currentIndex].urls.regular;
+		slider.userImg.src = slider.imageData[slider.currentIndex].user.profile_image.small;
+		slider.userName.textContent = slider.imageData[slider.currentIndex].user.name;
+		slider.date.textContent = "Added on: " + slider.imageData[slider.currentIndex].created_at.slice(0, 10);
+		slider.indexElement.textContent = (slider.currentIndex + 1) + "/" + slider.slidesLength;
+		slider.likeButton.textContent = slider.imageData[slider.currentIndex].likes;
 	},
 
-	prevSlide: function(_this) {
-		if (_this.currentIndex > 0) {
-			_this.currentIndex--;
-		} else if (_this.currentIndex === 0) {
-			_this.currentIndex = (_this.slidesLength - 1);
+	prevSlide: function() {
+		if (slider.currentIndex > 0) {
+			slider.currentIndex--;
+		} else if (slider.currentIndex === 0) {
+			slider.currentIndex = (slider.slidesLength - 1);
 		}
-		_this.image.src = _this.imageData[_this.currentIndex].urls.regular;
+		slider.image.src = slider.imageData[slider.currentIndex].urls.regular;
+		slider.userImg.src = slider.imageData[slider.currentIndex].user.profile_image.small;
+		slider.userName.textContent = slider.imageData[slider.currentIndex].user.name;
+		slider.date.textContent = "Added on: " + slider.imageData[slider.currentIndex].created_at.slice(0, 10);
+		slider.indexElement.textContent = (slider.currentIndex + 1) + "/" + slider.slidesLength;
+		slider.likeButton.textContent = slider.imageData[slider.currentIndex].likes;
 	},
+
+	startSlideshow: function() {
+		slider.startButton.classList.add('hidden');
+		slider.stopButton.classList.remove('hidden');
+		slider.interval = setInterval(function() {
+			slider.nextSlide();
+		}, 6000);
+
+	},
+	stopSlideshow: function() {
+		slider.startButton.classList.remove('hidden');
+		slider.stopButton.classList.add('hidden');
+		clearInterval(slider.interval);
+	}
 
 
 };
@@ -108,6 +159,7 @@ var api = {
 	data: [],
 	page: 1,
 	getImages: function() {
+		loader.show();
 		var _this = this;
 		fetch("https://api.unsplash.com/photos?page=" + _this.page + "&per_page=20", {
 			method: 'GET',
@@ -120,11 +172,14 @@ var api = {
 			for (var i = 0; i < imageData.length; i++) {
 				api.data.push(imageData[i]);
 			}
+			console.log(imageData);
 			render.images(api.data);
 			gallery.init();
+			loader.hide();
 			slider.init(api.data);
 		}).catch(function(error) {
 			console.log(error);
+			loader.hide();
 		});
 
 	},
@@ -152,16 +207,36 @@ var render = {
 			grid.appendChild(item);
 			// Images
 			var img = document.createElement('img');
-			img.src = imageData[i].urls.small;
+			img.src = imageData[i].urls.regular;
 			img.alt = imageData[i].title;
 			item.appendChild(img);
 			//Content
 			var section = document.createElement('section');
 			section.classList.add('gallery-content');
 			item.appendChild(section);
-			var title = document.createElement('h3');
+
+			var detailWrapper = document.createElement('div');
+			detailWrapper.classList.add('detail-wrapper');
+			section.appendChild(detailWrapper);
+
+			var likeIcon = document.createElement('img');
+			likeIcon.src = "assets/icons/heart.svg";
+			likeIcon.classList.add('like-icon');
+			section.appendChild(likeIcon);
+
+			var textWrapper = document.createElement('div');
+			textWrapper.classList.add('text-wrapper');
+			detailWrapper.appendChild(textWrapper);
+
+			var title = document.createElement('p');
+			title.classList.add('user-name');
 			title.textContent = imageData[i].user.name;
-			section.appendChild(title);
+			textWrapper.appendChild(title);
+
+			var date = document.createElement('p');
+			date.classList.add('date');
+			date.textContent = "Added on: " + imageData[i].created_at.slice(0, 10);
+			textWrapper.appendChild(date);
 		}
 	}
 };
@@ -177,7 +252,6 @@ var infiniteScroll = {
 			scrollPosition = window.pageYOffset;
 			if ((gridHeight - pageHeight - scrollPosition) < 500) {
 				api.page++;
-	
 				api.getImages();
 				window.removeEventListener('scroll', scroll);
 
@@ -186,10 +260,29 @@ var infiniteScroll = {
 
 		window.addEventListener('scroll', scroll);
 
-
-
 	},
 
 };
 
+var loader = {
+	init: function() {
+		//Create overlay
+		var grid = document.querySelector('.grid');
+		//Create loader div
+		this.element = document.createElement("div");
+		grid.appendChild(this.element);
+		this.element.classList.add("loader");
+
+	},
+	show: function() {
+		this.element.classList.add("active");
+	},
+	hide: function() {
+		this.element.classList.remove("active");
+	}
+
+};
+
+loader.init();
 api.getImages();
+slider.events();

@@ -10,36 +10,61 @@
 </head>
 
 <body>
-	<h1>Image gallery</h1>
 	<main>
-		<h3>5 pictures found</h3>
-		<section class="grid unloaded">
-			<!-- <a href="#" class="grid-item">
-			<img class="gallery-img" src="assets/images/8.jpeg" alt="Image of a building in Amsterdam">
-			<section class="gallery-content">
-				<h3>Mooi landschap</h3>
-				<p>9-10-2018</p>
-			</section>
-			</a> -->
+		<header>
+			<h1>Responsive gallery</h1>
+		</header>
+		<div class="grid-controls">
+			<ul class="categories">
+				<li class="active"><button>Popular</button></li>
+				<li><button>New</button></li>
+				<li><button>Trending</button></li>
+			</ul>
+			<ul class="layout">
+				<li class="active"><button><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 35 35"><path d="M0 0h16.365v7.106H0zm0 9.298h10.32v7.106H0zm12.515 0H22.65v7.106H12.515zm12.348 0H35v7.106H24.863zM18.635 0H35v7.106H18.635zM0 18.596h16.365v7.106H0zm0 9.297h10.321V35H0zm12.515 0h10.137V35H12.515zm12.348 0H35V35H24.863zm-6.228-9.297H35v7.106H18.635z"/></svg></button></li>
+				<li><button><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 455 455"><path d="M162 161h132v132H162zm0 162h132v132H162zM0 161h132v132H0zM324 0h131v131H324zM0 0h132v131H0zm162 0h132v131H162zm162 323h131v132H324zM0 323h132v132H0zm324-162h131v132H324z"/></svg></button></li>
+				<li><button><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 35 35"><path d="M0 0h16v16H0zm19 0h16v16H19zM0 19h16v16H0zm19 0h16v16H19z"/></svg></button></li>
+				<!-- <li><button><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 362.667 362.667"><path d="M0 288h362.667v42.667H0zm0-85.333h362.667v42.667H0zm0-85.334h362.667V160H0zM0 32h362.667v42.667H0z"/></svg></button></li> -->
+			</ul>
+		</div>
+		<section class="grid">
+
 		</section>
 
 		<div class="slider">
-			<div class="slider-controls">
-				<button class="prev-button">
-					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 284.935 284.936"><path d="M110.488 142.468L222.694 30.264c1.902-1.903 2.854-4.093 2.854-6.567s-.951-4.664-2.854-6.563L208.417 2.857C206.513.955 204.324 0 201.856 0c-2.475 0-4.664.955-6.567 2.857L62.24 135.9c-1.903 1.903-2.852 4.093-2.852 6.567 0 2.475.949 4.664 2.852 6.567l133.042 133.043c1.906 1.906 4.097 2.857 6.571 2.857 2.471 0 4.66-.951 6.563-2.857l14.277-14.267c1.902-1.903 2.851-4.094 2.851-6.57 0-2.472-.948-4.661-2.851-6.564L110.488 142.468z" fill="#000"/></svg>
-					<span>Previous</span>
-				</button>
-				<button class="next-button">
-					<span>Next</span>
-					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 284.935 284.936"><path d="M222.701 135.9L89.652 2.857C87.748.955 85.557 0 83.084 0c-2.474 0-4.664.955-6.567 2.857L62.244 17.133c-1.906 1.903-2.855 4.089-2.855 6.567 0 2.478.949 4.664 2.855 6.567l112.204 112.204L62.244 254.677c-1.906 1.903-2.855 4.093-2.855 6.564 0 2.477.949 4.667 2.855 6.57l14.274 14.271c1.903 1.905 4.093 2.854 6.567 2.854 2.473 0 4.663-.951 6.567-2.854l133.042-133.044c1.902-1.902 2.854-4.093 2.854-6.567s-.945-4.664-2.847-6.571z" fill="#000"/></svg>
-				</button>
-				<button class="close-button"> <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="21px" viewbox="0 0 512 512"><path d="M505.943 6.058c-8.077-8.077-21.172-8.077-29.249 0L6.058 476.693c-8.077 8.077-8.077 21.172 0 29.249 4.038 4.04 9.332 6.058 14.625 6.058 5.293 0 10.586-2.019 14.625-6.059L505.943 35.306c8.076-8.076 8.076-21.171 0-29.248z"/><path d="M505.942 476.694L35.306 6.059c-8.076-8.077-21.172-8.077-29.248 0-8.077 8.076-8.077 21.171 0 29.248l470.636 470.636c4.038 4.039 9.332 6.058 14.625 6.058 5.293 0 10.587-2.019 14.624-6.057 8.075-8.078 8.075-21.173-.001-29.25z"/></svg>
-				<span>Close</span>
-				</button>
-			</div>
-			<section>
-				<img class="slider-img" src="/" alt="Image of a building in Amsterdam">
-				<h3 class="slider-title">Prachtig landschap</h3>
+			<section class="slider-content">
+				<header>
+					<div class="user-details">
+						<img class="slider-profile-img" src="/" alt="User icon">
+						<div class="text">
+							<p class="slider-user-name"></p>
+							<p class="slider-date"></p>
+						</div>
+					</div>
+					<button class="close-button"> <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="21px" viewbox="0 0 512 512"><path d="M505.943 6.058c-8.077-8.077-21.172-8.077-29.249 0L6.058 476.693c-8.077 8.077-8.077 21.172 0 29.249 4.038 4.04 9.332 6.058 14.625 6.058 5.293 0 10.586-2.019 14.625-6.059L505.943 35.306c8.076-8.076 8.076-21.171 0-29.248z"/><path d="M505.942 476.694L35.306 6.059c-8.076-8.077-21.172-8.077-29.248 0-8.077 8.076-8.077 21.171 0 29.248l470.636 470.636c4.038 4.039 9.332 6.058 14.625 6.058 5.293 0 10.587-2.019 14.624-6.057 8.075-8.078 8.075-21.173-.001-29.25z"/></svg>
+					<span>Close</span>
+					</button>
+				</header>
+				<div class="slider-controls">
+					<button class="prev-button">
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 284.935 284.936"><path d="M110.488 142.468L222.694 30.264c1.902-1.903 2.854-4.093 2.854-6.567s-.951-4.664-2.854-6.563L208.417 2.857C206.513.955 204.324 0 201.856 0c-2.475 0-4.664.955-6.567 2.857L62.24 135.9c-1.903 1.903-2.852 4.093-2.852 6.567 0 2.475.949 4.664 2.852 6.567l133.042 133.043c1.906 1.906 4.097 2.857 6.571 2.857 2.471 0 4.66-.951 6.563-2.857l14.277-14.267c1.902-1.903 2.851-4.094 2.851-6.57 0-2.472-.948-4.661-2.851-6.564L110.488 142.468z" fill="#000"/></svg>
+						<span>Previous</span>
+					</button>
+					<button class="next-button">
+						<span>Next</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 284.935 284.936"><path d="M222.701 135.9L89.652 2.857C87.748.955 85.557 0 83.084 0c-2.474 0-4.664.955-6.567 2.857L62.244 17.133c-1.906 1.903-2.855 4.089-2.855 6.567 0 2.478.949 4.664 2.855 6.567l112.204 112.204L62.244 254.677c-1.906 1.903-2.855 4.093-2.855 6.564 0 2.477.949 4.667 2.855 6.57l14.274 14.271c1.903 1.905 4.093 2.854 6.567 2.854 2.473 0 4.663-.951 6.567-2.854l133.042-133.044c1.902-1.902 2.854-4.093 2.854-6.567s-.945-4.664-2.847-6.571z" fill="#000"/></svg>
+					</button>
+				</div>
+				<img class="slider-img" src="/" alt="">
+				<footer>
+					<button class="slider-like-button">
+					<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 471.701 471.701" width="22" height="22"><path d="M433.601 67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7 13.6-92.4 38.3l-12.9 12.9-13.1-13.1c-24.7-24.7-57.6-38.4-92.5-38.4-34.8 0-67.6 13.6-92.2 38.2-24.7 24.7-38.3 57.5-38.2 92.4 0 34.9 13.7 67.6 38.4 92.3l187.8 187.8c2.6 2.6 6.1 4 9.5 4 3.4 0 6.9-1.3 9.5-3.9l188.2-187.5c24.7-24.7 38.3-57.5 38.3-92.4.1-34.9-13.4-67.7-38.1-92.4zm-19.2 165.7l-178.7 178-178.3-178.3c-19.6-19.6-30.4-45.6-30.4-73.3s10.7-53.7 30.3-73.2c19.5-19.5 45.5-30.3 73.1-30.3 27.7 0 53.8 10.8 73.4 30.4l22.6 22.6c5.3 5.3 13.8 5.3 19.1 0l22.4-22.4c19.6-19.6 45.7-30.4 73.3-30.4 27.6 0 53.6 10.8 73.2 30.3 19.6 19.6 30.3 45.6 30.3 73.3.1 27.7-10.7 53.7-30.3 73.3z" fill="#000"/></svg>
+					<span class="like-amount">114</span>
+					</button>
+					<button class="start-slideshow"><svg width="14" height="14" viewbox="210 14 21 24" xmlns="http://www.w3.org/2000/svg" class="play-icon"><path fill="#000" fill-rule="evenodd" d="M230.677 25.815L210 37.63V14"/></svg>Start Slideshow</button>
+					<button class="stop-slideshow hidden"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 36 36" width="14" height="14"><path d="M35 0H1C.448 0 0 .447 0 1v34c0 .553.448 1 1 1h34c.552 0 1-.447 1-1V1c0-.553-.448-1-1-1z" fill="#000"/></svg>Stop Slideshow</button>
+					<span class="img-index">1/7</span>
+				</footer>
 			</section>
 
 		</div>
