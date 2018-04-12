@@ -73,8 +73,17 @@ var slider = {
 		this.el.addEventListener('click', function(e) {
 			if (!sliderContent.contains(e.target)) {
 				_this.close();
+				document.body.style.cursor = 'default';
 			}
 		});
+		this.el.addEventListener('mouseover', function(e) {
+			if (!sliderContent.contains(e.target)) {
+				document.body.style.cursor = 'zoom-out';
+			} else {
+				document.body.style.cursor = 'default';
+			}
+		});
+
 		window.addEventListener("keydown", function(e) {
 			switch (e.key) {
 				case 'ArrowRight':
@@ -172,7 +181,6 @@ var api = {
 			for (var i = 0; i < imageData.length; i++) {
 				api.data.push(imageData[i]);
 			}
-			console.log(imageData);
 			render.images(api.data);
 			gallery.init();
 			loader.hide();

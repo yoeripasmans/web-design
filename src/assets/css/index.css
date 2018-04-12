@@ -175,6 +175,10 @@ button {
     top: 1em;
 }
 
+.grid-item:hover {
+	cursor: zoom-in;
+}
+
 .grid-item:hover>section, .grid-item:focus>section {
     opacity: 1;
 }
