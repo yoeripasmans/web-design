@@ -75,6 +75,10 @@ button {
     fill: #000;
 }
 
+.layout li.active svg {
+	transform: rotate(90deg);
+}
+
 .grid-controls ul.lay-out {
     margin-left: auto;
 }
@@ -333,6 +337,7 @@ button {
     display: flex;
     align-items: center;
     margin-right: 1em;
+	width: 3em;
 }
 
 .slider-like-button span {
