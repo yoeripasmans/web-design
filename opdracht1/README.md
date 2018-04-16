@@ -4,7 +4,7 @@
 
 Voor deze opdracht heb ik een use case uitgewerkt waarin de gebruiker door een overzicht van foto's heen kan scrollen, info lezen, groot kunnen bekijken en als slideshow afspelen. Hiervoor heb ik een prototype uitgewerkt in HTMl, CSS en Javascript. Tijdens dit proces heb ik door te testen een beter eindproduct kunnen realiseren.  Daarbij heb ik rekening gehouden met verschillende design principles van de Principles of User Interface Design. [bron](http://bokardo.com/principles-of-user-interface-design/)
 
-[Link naar demo](https://yoeripasmans.github.io/web-design/src/)
+[Link naar demo](https://yoeripasmans.github.io/web-design/opdracht1/src/)
 
 ## Schetsen
 
