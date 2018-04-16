@@ -6,7 +6,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body.noscroll {
@@ -16,15 +16,14 @@ body.noscroll {
 }
 
 main {
-    max-width: 72em;
-    margin: 2em auto;
-    padding: 0 1em;
+    width: 100%;
+    margin: 0 auto;
     position: relative;
 }
 
 h1 {
     margin: 0;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 2.1em;
 }
 
@@ -37,4 +36,138 @@ button {
     line-height: normal;
     overflow: visible;
     padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 4.25em;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    z-index: 2;
+    padding: 0 1.74em;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .06);
+}
+
+.main-nav {
+    height: 100%;
+    margin: 0 auto;
+}
+
+.main-nav ul {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav ul li {
+    list-style-type: none;
+    margin-right: 2em;
+}
+
+.main-nav ul li:last-of-type {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+main section {
+    min-height: calc(100vh - 4.25em);
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background-color: #F7F7F7;
+}
+
+main section:nth-child(2n+1) {
+    background-color: #F9D849;
+}
+
+main section h2 {
+    margin: 0 0 1em 0;
+    font-size: 3.3em;
+    color: #F9D849;
+    background-color: #000;
+    padding: 0 .25em;
+    display: block;
+    width: fit-content;
+}
+
+main section p {
+    max-width: 36em;
+    line-height: 1.85;
+	font-size: 1.1em;
+}
+
+.content {
+    max-width: 60em;
+    padding: 1em;
+    margin-bottom: 3em;
+}
+
+#home:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    position: absolute;
+    opacity: 0.8;
+}
+
+#home .content {
+    z-index: 1;
+    color: #fff;
+}
+
+#home {
+    background-image: url('/assets/img/buiten.jpg');
+    background-repeat: none;
+    background-size: cover;
+}
+
+#voorjou .content {
+	    border-bottom: 1px solid #e6e6e6;
+}
+
+.scroll-down-button:hover {
+    opacity: 1;
+}
+
+.scroll-down-button {
+    z-index: 2;
+    padding-top: 40px;
+    position: absolute;
+    bottom: 0.75em;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+.scroll-down-button span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: sdb05 1.5s infinite;
+    animation: sdb05 1.5s infinite;
+    box-sizing: border-box;
 }
