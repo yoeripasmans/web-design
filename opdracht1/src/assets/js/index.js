@@ -208,7 +208,7 @@ var render = {
 			var item = document.createElement('a');
 			item.href = '#';
 			item.classList.add('grid-item');
-			item.addEventListener('click', function(e) {
+			item.addEventListener('click', function onclick(e) {
 				slider.open(i);
 				e.preventDefault();
 			});
