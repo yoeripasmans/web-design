@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+
 * {
     box-sizing: border-box;
 }
@@ -67,16 +68,54 @@ header {
     margin-right: 2em;
 }
 
+.main-nav ul li.active a:before {
+	visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
 .main-nav ul li:last-of-type {
     margin-left: auto;
     margin-right: 0;
 }
 
 .main-nav ul li a {
+	 position: relative;
     text-decoration: none;
     color: #000;
     font-weight: 600;
     font-size: 1em;
+}
+
+.main-nav ul li a:focus {
+	outline: 0;
+}
+
+.main-nav ul li a:before {
+  content: "";
+      top: 23px;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #F9D849;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.main-nav ul li a:hover:before, .main-nav ul li a:focus:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+header img{
+width: 4em;
+margin-right: 2em;
 }
 
 main section {
@@ -87,7 +126,11 @@ main section {
     justify-content: center;
     flex-direction: column;
     position: relative;
-    background-color: #F7F7F7;
+    /* background-color: #F7F7F7; */
+	padding: 4em 0;
+}
+#home {
+	min-height: 100vh;
 }
 
 main section:nth-child(2n+1) {
@@ -107,7 +150,7 @@ main section h2 {
 main section p {
     max-width: 36em;
     line-height: 1.85;
-	font-size: 1.1em;
+    font-size: 1.1em;
 }
 
 .content {
@@ -138,7 +181,24 @@ main section p {
 }
 
 #voorjou .content {
-	    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+    padding: 0 1em;
+    list-style-type: none;
+    grid-gap: 0.8em;
+    max-width: 50em;
+	margin: 1em auto;
+}
+
+.gallery li img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .scroll-down-button:hover {
@@ -154,11 +214,12 @@ main section p {
     text-decoration: none;
     font-size: 0.9em;
     opacity: 0.7;
+	font-size: 0;
 }
 
 .scroll-down-button span {
     position: absolute;
-    top: 0;
+    top: -10px;
     left: 50%;
     width: 24px;
     height: 24px;

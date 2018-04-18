@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var imagemin = require('gulp-imagemin');
 var browserSync = require('browser-sync').create();
 
 gulp.task('browserSync', function() {
