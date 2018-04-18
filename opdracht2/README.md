@@ -40,3 +40,8 @@ Het is Februari en Niels heeft zich twee weken geleden ingeschreven voor de Mino
 - Toelatingseisen bekijken.
 - Aanmelden.
 - Kijken wat andere mensen van minor vinden.
+
+# Veranderingen na feedback
+
+- Active states van het menu duidelijker gemaakt. (Eerst alleen underline onder text, veranderd naar dikker lettertype)
+- Animatie toegevoegd aan hover states.

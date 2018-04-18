@@ -127,7 +127,7 @@ header {
 }
 
 .main-nav a.active {
-	font-weight: 600;
+    font-weight: 600;
 }
 
 .main-nav a:focus {
@@ -223,11 +223,12 @@ main section p {
 }
 
 .content__gallery img {
-	cursor: pointer;
+    cursor: pointer;
     transition: transform 0.3s ease;
 }
-.content__gallery a{
-	overflow: hidden;
+
+.content__gallery a {
+    overflow: hidden;
     display: block;
 }
 
@@ -266,7 +267,7 @@ main section p {
 
 #voorjou .content__text {
     max-width: 40em;
-    padding-bottom: 3em ;
+    padding-bottom: 3em;
     margin: 0 auto 5em auto;
     border-bottom: 1px solid #e6e6e6;
 }
@@ -277,7 +278,7 @@ main section p {
     padding: 0 1em;
     list-style-type: none;
     grid-gap: 0.8em;
-    max-width: 55em;
+    max-width: 50em;
     margin: 1em auto;
 }
 
@@ -289,11 +290,72 @@ main section p {
 }
 
 #werkwijze .content {
-	display: flex;
-	max-width: 58em;
+    display: flex;
+    max-width: 58em;
 }
 
 #werkwijze img {
     margin-left: 6em;
-	align-self: center;
+    align-self: center;
+}
+
+#lesprogramma h2 {
+	    margin: 0 auto 1.2em auto;
+}
+
+#lesprogramma summary {
+    height: 3em;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    background-color: #F6F6F6;
+    min-width: 40em;
+    font-weight: 600;
+	cursor: pointer;
+}
+
+#lesprogramma details {
+    margin: 1em 0;
+}
+
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+  0%    {opacity: 0; margin-left: -10px}
+  100%  {opacity: 1; margin-left: 0}
+}
+
+#studentenwerk {
+	    background-color: #F7F7F7;
+}
+
+#toelatingseisen {
+	    min-height: calc(80vh - 4.25em);
+		background-color: #ffcc00;
+}
+
+#studentenwerk .content__projects {
+	display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    list-style-type: none;
+    grid-gap: 0.8em;
+    max-width: 60em;
+    margin: 1em auto;
+}
+
+#studentenwerk article {
+	background-color: #fff;
+}
+
+#studentenwerk .content__projects img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#aanmelden {
+	background-color: #fff;
 }

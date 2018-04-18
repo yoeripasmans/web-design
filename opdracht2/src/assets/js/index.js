@@ -58,7 +58,7 @@ function onScroll() {
     for (var i = 0; i < anchors.length; ++i) {
         // Get the current element by the id from the anchor's href.
         var currentRefElement = document.getElementById(anchors[i].getAttribute('href').substring(1));
-        var currentRefElementTop = (currentRefElement.getBoundingClientRect().top - 68);
+        var currentRefElementTop = (currentRefElement.getBoundingClientRect().top - 70);
         // Searching for the element whose top haven't left the top of the browser.
         if (currentRefElementTop <= 0) {
             //The browser's top line haven't reached the current element, so the previous element is the one we currently look at.
