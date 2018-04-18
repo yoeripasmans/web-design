@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+/*
+========================================================
+GENERAL
+========================================================
+*/
 
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
 * {
     box-sizing: border-box;
 }
@@ -28,6 +33,22 @@ h1 {
     font-size: 2.1em;
 }
 
+h2 {
+    margin: 0 0 1em 0;
+    font-size: 2.6em;
+    color: #ffcc00;
+    background-color: #000;
+    padding: 0 .25em;
+    display: block;
+    width: fit-content;
+}
+
+@media(max-width: 30em) {
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
 button {
     background: none;
     border: 0;
@@ -39,20 +60,38 @@ button {
     padding: 0;
 }
 
+/*
+========================================================
+HEADER
+========================================================
+*/
+
 header {
     width: 100%;
     height: 4.25em;
     position: fixed;
     top: 0;
     background-color: #fff;
-    z-index: 2;
+    z-index: 3;
     padding: 0 1.74em;
     box-shadow: 0 2px 6px 2px rgba(0, 0, 0, .06);
+    display: flex;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.6em;
+}
+
+.logo img {
+    width: 6.5em;
 }
 
 .main-nav {
     height: 100%;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .main-nav ul {
@@ -63,60 +102,97 @@ header {
     margin: 0;
 }
 
-.main-nav ul li {
+.main-nav li {
     list-style-type: none;
     margin-right: 2em;
 }
 
-.main-nav ul li.active a:before {
-	visibility: visible;
+.main-nav a.active:before {
+    visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
 }
 
-.main-nav ul li:last-of-type {
+.main-nav li:last-of-type {
     margin-left: auto;
     margin-right: 0;
 }
 
-.main-nav ul li a {
-	 position: relative;
+.main-nav a {
+    position: relative;
     text-decoration: none;
     color: #000;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1em;
 }
 
-.main-nav ul li a:focus {
-	outline: 0;
+.main-nav a.active {
+	font-weight: 600;
 }
 
-.main-nav ul li a:before {
-  content: "";
-      top: 23px;
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #F9D849;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-  transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
+.main-nav a:focus {
+    outline: 0;
 }
 
-.main-nav ul li a:hover:before, .main-nav ul li a:focus:before {
-  visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
+.main-nav a:before {
+    content: "";
+    top: 23px;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #F9D849;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
 }
 
-header img{
-width: 4em;
-margin-right: 2em;
+.main-nav a:hover:before, .main-nav a:focus:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
 }
+
+.scroll-down-button:hover {
+    opacity: 1;
+}
+
+.scroll-down-button {
+    z-index: 2;
+    padding-top: 40px;
+    position: absolute;
+    bottom: 0.75em;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9em;
+    opacity: 0.7;
+    font-size: 0;
+}
+
+.scroll-down-button span {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: sdb05 1.5s infinite;
+    animation: sdb05 1.5s infinite;
+    box-sizing: border-box;
+}
+
+/*
+========================================================
+SECTIONS
+========================================================
+*/
 
 main section {
     min-height: calc(100vh - 4.25em);
@@ -124,39 +200,47 @@ main section {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     position: relative;
     /* background-color: #F7F7F7; */
-	padding: 4em 0;
-}
-#home {
-	min-height: 100vh;
+    padding: 4em 0;
 }
 
 main section:nth-child(2n+1) {
-    background-color: #F9D849;
-}
-
-main section h2 {
-    margin: 0 0 1em 0;
-    font-size: 3.3em;
-    color: #F9D849;
-    background-color: #000;
-    padding: 0 .25em;
-    display: block;
-    width: fit-content;
+    background-color: #ffcc00;
 }
 
 main section p {
     max-width: 36em;
     line-height: 1.85;
     font-size: 1.1em;
+    margin-bottom: 0;
 }
 
 .content {
     max-width: 60em;
     padding: 1em;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
+}
+
+.content__gallery img {
+	cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.content__gallery a{
+	overflow: hidden;
+    display: block;
+}
+
+.content__gallery a:focus>img, .content__gallery a:hover>img {
+    transform: scale(1.1);
+}
+
+#home {
+    min-height: 100vh;
+}
+
+#home h2 {
+    font-size: 3em;
 }
 
 #home:before {
@@ -180,55 +264,36 @@ main section p {
     background-size: cover;
 }
 
-#voorjou .content {
+#voorjou .content__text {
+    max-width: 40em;
+    padding-bottom: 3em ;
+    margin: 0 auto 5em auto;
     border-bottom: 1px solid #e6e6e6;
 }
 
-.gallery {
+#voorjou .content__gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
     padding: 0 1em;
     list-style-type: none;
     grid-gap: 0.8em;
-    max-width: 50em;
-	margin: 1em auto;
+    max-width: 55em;
+    margin: 1em auto;
 }
 
-.gallery li img {
+#voorjou .content__gallery li img {
     display: block;
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
 
-.scroll-down-button:hover {
-    opacity: 1;
+#werkwijze .content {
+	display: flex;
+	max-width: 58em;
 }
 
-.scroll-down-button {
-    z-index: 2;
-    padding-top: 40px;
-    position: absolute;
-    bottom: 0.75em;
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9em;
-    opacity: 0.7;
-	font-size: 0;
-}
-
-.scroll-down-button span {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    width: 24px;
-    height: 24px;
-    margin-left: -12px;
-    border-left: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    -webkit-animation: sdb05 1.5s infinite;
-    animation: sdb05 1.5s infinite;
-    box-sizing: border-box;
+#werkwijze img {
+    margin-left: 6em;
+	align-self: center;
 }
