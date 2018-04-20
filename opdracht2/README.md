@@ -1,6 +1,8 @@
 # WD Opdracht2 - Website Minor Web Development
 Voor deze opdracht heb ik de bestaande website van de minor Web Development herontworpen en in HTML/CSS/Javascript uitgewerkt. Om tot een goed eindresultaat te komen heb ik tijdens het proces heb verschillende iteraties gemaakt. Door te testen op de doelgroep. Het proces hiervan wordt in deze readme toegelicht.
 
+Link naar demo: [assets/img/showtime.jpg](https://yoeripasmans.github.io/web-design/opdracht2/src)
+
 # Aanpak
 Eerst ben ik gaan kijken naar de content van de huidige website en wat voor content ik nog extra nodig had. Daarna heb ik verschillende user scenario's geschreven en gekeken naar de doelen van de gebruikers. Uit deze informatie heb ik door middel van card sorting een bijpassende structuur bedacht voor de website en daarna een sitemap opgesteld om de structuur duidelijk visueel in kaart te brengen. Ten slotte was het de opdracht om niet alleen voor de doelgroep te ontwerpen,  maar ook voor een specefiek persoon. In mijn geval was dat Marijn een motorisch gehandicapte die het liefst alleen zijn toetsenbord gebruikt. Hier heb ik dus ook rekening mee gehouden.
 
