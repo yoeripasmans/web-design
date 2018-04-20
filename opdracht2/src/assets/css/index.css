@@ -306,9 +306,7 @@ main section p {
 
 #lesprogramma summary {
     height: 3em;
-    display: flex;
-    align-items: center;
-    padding: 1em;
+    padding: 0.8em 1em;
     background-color: #F6F6F6;
     min-width: 40em;
     font-weight: 600;

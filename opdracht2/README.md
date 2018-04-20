@@ -52,6 +52,9 @@ Het is Februari en Niels heeft zich twee weken geleden ingeschreven voor de Mino
 
 Hierin wordt per pagina beschreven welke content er nodig is om de gebruikersdoelen te realiseren.
 
+### Home
+Op deze pagina wordt op de achtergrond afbeeldingen weergeven om een sfeerimpressie te geven, daarbij wordt met een duidelijke titel aangeven wat voor een site het is. Ten slotte nog een introductie over de minor. 
+
 ### Iets voor jou?
 Op deze pagina wordt er met tekst beschreven wat de minor inhoudt en met afbeeldingen en sfeerimpressie gegeven.
 
