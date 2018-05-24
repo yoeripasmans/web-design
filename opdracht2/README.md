@@ -85,7 +85,7 @@ Op deze pagina staat een formulier waarin de gebruiker zich kan aanmelden voor d
 - Indeling van pagina's aangepast
 - Scenario aangescherpt
 
-## Veranderingen na feedback uit admin
+# Veranderingen na feedback uit admin
 
 ## Gebruikers aangescherpt
 Marijn - Motorisch gehandicapte die het liefst alleen zijn toetsenbord gebruikt om te navigeren.
@@ -93,18 +93,18 @@ Simon - Een tweede jaars CMD student die zich orienteert op een minor. Doet veel
 
 ## User Scenario's aangepast
 
-## User scenario 1 - Sfeerimpressie krijgen
+### User scenario 1 - Sfeerimpressie krijgen
 Wat belangrijk voor Simon is dat er binnen de minor een prettige sfeer hangt. Door naar de site te navigeren en de homepage te bekijken krijgt hij gelijk een Sfeerimpressie door de afbeelding op de achtergrond en de introductie tekst. Door dit te lezen krijgt hij een beter beeld over de minor.
 
-## User scenario 2 - Studentenwerk bekijken en aanmelden
+### User scenario 2 - Studentenwerk bekijken en aanmelden
 
 Simon wilt graag zien wat hij gaat maken als hij kiest voor deze de minor, daarnaast bekijkt hij dit om ook een idee te krijgen over het niveau wat verwacht wordt. Ten slotte wilt hij zich ook nog aanmelden voor de minor. Hij klikt daarom op de button "Bekijk studentenwerk". Dit navigeert hem naar projecten die tijdens de minor gemaakt zijn. Hij kan door deze projecten heen filteren op techniek en design aspecten die hem liggen. Als hij op een project klikt ziet hij meer details over dat project. Na een een paar projecten door te hebben gelezen heeft hij besloten om zich in te schrijven voor deze minor. Dit kan hij gemakkelijk doen via de sectie "Zin gekregen in de minor?" onderin de detailpagina van een project. Door op de knop "Meld je nu aan" te klikken wordt Simon naar de aanmeld sectie geleidt waarna hij zich inschrijft via het formulier.
 
-## User scenario 3 - Lesprogramma bekijken
+### User scenario 3 - Lesprogramma bekijken
 
 Het is Februari en Niels heeft zich twee weken geleden ingeschreven voor de Minor Webdevelopment. Hij weet nog niet precies welke vakken hij allemaal gaat volgen. Hij navigeert naar de website en klikt op "Lesprogramma". Waarin hij een duidelijk overzicht krijgt van alle vakken die hij gaat volgen.
 
-## User scenario 4 - Navigatie
+### User scenario 4 - Navigatie
 
 Marijn wilt het liefst door de site heen kunnen navigeren met zijn toetsenbord door zijn beperking. Dit moet dus makkelijk voor Marijn te doen zijn door duidelijke focus states te gebruiken.
 
