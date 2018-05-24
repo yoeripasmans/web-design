@@ -29,18 +29,18 @@ main {
 
 h1 {
     margin: 0;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 2.1em;
 }
 
 h2 {
-    margin: 0 0 1em 0;
-    font-size: 2.6em;
-    color: #ffcc00;
-    background-color: #000;
-    padding: 0 .25em;
-    display: block;
-    width: fit-content;
+	margin: 0;
+font-size: 2.6em;
+color: #;
+/* background-color: #000; */
+/* padding: 0 .25em; */
+display: block;
+width: fit-content;
 }
 
 @media(max-width: 30em) {
@@ -66,7 +66,7 @@ HEADER
 ========================================================
 */
 
-header {
+body>header {
     width: 100%;
     height: 4.25em;
     position: fixed;
@@ -82,7 +82,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1.6em;
+    margin-right: 1.8em;
 }
 
 .logo img {
@@ -156,7 +156,28 @@ header {
     transform: scaleX(1);
 }
 
-.scroll-down-button:hover {
+.call-to-action {
+    height: 4em;
+    width: 16em;
+    margin-top: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    background-color: #ffcc00;
+    transition: 0.3s ease;
+}
+
+.call-to-action:hover, .call-to-action:focus {
+    background-color: transparent;
+    border: 3px solid #ffcc00;
+    color: #fff;
+    outline: 0;
+}
+
+.scroll-down-button:hover, .scroll-down-button:focus {
     opacity: 1;
 }
 
@@ -188,13 +209,39 @@ header {
     box-sizing: border-box;
 }
 
+.back-to-top {
+    opacity: 0;
+    position: absolute;
+    right: 2em;
+    bottom: 2em;
+    width: 5em;
+    height: 5em;
+    background-color: #ffcc00;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+}
+
+.back-to-top:focus {
+    opacity: 1;
+    z-index: 1;
+}
+
+.back-to-top svg {
+    width: 2em;
+}
+
+.back-to-top span {
+    display: none;
+}
+
 /*
 ========================================================
 SECTIONS
 ========================================================
 */
 
-main section {
+main>section {
     min-height: calc(100vh - 4.25em);
     background-color: #fff;
     display: flex;
@@ -205,7 +252,11 @@ main section {
     padding: 4em 0;
 }
 
-main section:nth-child(2n+1) {
+main>section h2 {
+    margin: 0 0 0.7em 0;
+}
+
+main>section:nth-child(2n+1) {
     background-color: #ffcc00;
 }
 
@@ -230,6 +281,11 @@ main section p {
 .content__gallery a {
     overflow: hidden;
     display: block;
+	outline: 0;
+}
+
+.content__gallery a:focus {
+	border: 2px solid #43A0F8;
 }
 
 .content__gallery a:focus>img, .content__gallery a:hover>img {
@@ -240,8 +296,17 @@ main section p {
     min-height: 100vh;
 }
 
+#home h1 {
+		 margin: 0 0 -0.3em 0;
+}
+
 #home h2 {
-    font-size: 3em;
+    font-size: 3.5em;
+    margin: 0;
+}
+
+#home p {
+    line-height: 1.75;
 }
 
 #home:before {
@@ -257,13 +322,18 @@ main section p {
 #home .content {
     z-index: 1;
     color: #fff;
+	margin-right: 10em;
 }
 
 #home {
-	background-color: #595959;
+    background-color: #595959;
     background-image: url('../img/buiten.jpg');
     background-repeat: none;
     background-size: cover;
+}
+
+#voorjou {
+    background-color: #fff;
 }
 
 #voorjou .content__text {
@@ -279,7 +349,7 @@ main section p {
     padding: 0 1em;
     list-style-type: none;
     grid-gap: 0.8em;
-    max-width: 50em;
+    max-width: 43em;
     margin: 1em auto;
 }
 
@@ -288,6 +358,10 @@ main section p {
     object-fit: cover;
     width: 100%;
     height: 100%;
+}
+
+#werkwijze {
+    background-color: #ffcc00;
 }
 
 #werkwijze .content {
@@ -300,55 +374,88 @@ main section p {
     align-self: center;
 }
 
+@media (max-width: 600px) {
+    #werkwijze img {
+        display: none;
+    }
+}
+
+#lesprogramma, #aanmelden {
+    background-color: #F6F6F6;
+}
+
 #lesprogramma h2 {
-	    margin: 0 auto 1.2em auto;
+    margin: 0 auto 1.2em auto;
 }
 
 #lesprogramma summary {
     height: 3em;
     padding: 0.8em 1em;
-    background-color: #F6F6F6;
-    min-width: 40em;
+    background-color: #585858;
+	color: #fff;
+    width: 100%;
     font-weight: 600;
-	cursor: pointer;
+	    min-width: 40em;
+    cursor: pointer;
+	outline: 0;
+}
+#lesprogramma summary:focus {
+	border: 2px solid #ffcc00;
 }
 
 #lesprogramma details {
     margin: 1em 0;
 }
 
-details[open] summary ~ * {
-  animation: sweep .5s ease-in-out;
+details[open] summary~* {
+    animation: sweep .5s ease-in-out;
 }
 
 @keyframes sweep {
-  0%    {opacity: 0; margin-left: -10px}
-  100%  {opacity: 1; margin-left: 0}
+    0% {
+        opacity: 0;
+        margin-left: -10px
+    }
+    100% {
+        opacity: 1;
+        margin-left: 0
+    }
 }
 
 #studentenwerk {
-	    background-color: #F7F7F7;
+    background-color: #fff;
+}
+
+#aanmelden .content {
+	    max-width: 42em;
 }
 
 #toelatingseisen {
-	    min-height: calc(80vh - 4.25em);
-		background-color: #ffcc00;
+    min-height: calc(80vh - 4.25em);
+    background-color: #ffcc00;
+}
+#studentenwerk {
+	padding: 3em 0
+}
+
+#studentenwerk .content {
+    max-width: 70em;
 }
 
 #studentenwerk .content__projects {
-	display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
     list-style-type: none;
     grid-gap: 1.2em;
-    max-width: 60em;
+    max-width: 70em;
     margin: 1em auto;
 }
 
 #studentenwerk article {
-	background-color: #fff;
+    background-color: #fff;
 }
 
-#studentenwerk .content__projects img {
+#studentenwerk .content__projects .thumb {
     display: block;
     object-fit: cover;
     width: 100%;
@@ -356,23 +463,310 @@ details[open] summary ~ * {
 }
 
 #studentenwerk h3 {
-	    padding-left: 0.78em;
+    padding-left: 0.78em;
+    font-weight: 600;
 }
 
-#studentenwerk img {
+#studentenwerk h2 {
+    margin: 0;
+    font-size: 3em;
+    color: #000;
+    background-color: transparent;
+    padding: 0;
+    display: block;
+    width: fit-content;
+    margin-bottom: 0.5em;
+}
+
+.grid-item {
+    overflow: hidden;
+    position: relative;
+	height: 16em;
+}
+
+.grid-item img {
+    display: block;
+    max-width: 100%;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
-#studentenwerk a {
-    overflow: hidden;
-    display: block;
+.grid-item section {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.user-img {
+    border-radius: 50%;
+    align-self: center;
+    outline: none;
+    display: none !important;
+}
+
+.text-wrapper p {
+    margin: 0;
+}
+
+.grid-item .detail-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 1em;
+    display: flex;
+}
+
+.user-name {
+	font-size: 1.8em;
+    height: 1.5em;
+    font-weight: 700;
+}
+
+.date {
+    font-size: 1em;
+    opacity: 0.8;
+}
+
+.like-icon {
+    width: 1.4em;
+    height: 1.4em;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+	opacity: 0.6;
+}
+
+.grid-item:hover section, .grid-item a:focus section {
+    opacity: 1;
+}
+
+.grid-item:hover .thumb, .grid-item a:focus .thumb {
+    filter: blur(2px);
+}
+
+.filter {
+    margin: 2em 0 1.5em 0;
+    border-bottom: 1px solid #e6e8eb;
+    padding-bottom: 1em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.categories {
+    padding: 0;
+    margin: 0;
+	margin-left: auto;
+}
+
+.current-categorie {
+	margin: 0;
+	font-weight: 600;
+	font-size: 1.2em;
+}
+
+.categories li {
+    display: inline;
+    margin-right: 1.2em;
+    font-size: 1.05em;
+    font-weight: 400;
+    color: #8a8a8a;
+}
+.categories li:last-child {
+    margin-right: 0;
+
+}
+
+.categories li.active {
+    color: #43A0F8;
 }
 
 #studentenwerk a:focus>img, #studentenwerk a:hover>img {
     transform: scale(1.1);
 }
 
-#aanmelden {
-	background-color: #fff;
+#toelatingseisen {
+    background-color: #fff;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #ffcc00;
+    color: #000;
+    padding: 14px 20px;
+    height: 3.5em;
+    margin: 8px auto;
+    border: none;
+    cursor: pointer;
+    width: 15em;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.input-wrapper {
+    position: relative;
+    margin: 2em 0;
+}
+
+.input-wrapper input {
+    border: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    font-size: 1em;
+    outline: 0;
+    width: 15em;
+}
+
+.input-wrapper input~.focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffcc00;
+    transition: 0.4s;
+}
+
+.input-wrapper input:focus~.focus-border, .has-content.input-wrapper input~.focus-border {
+    width: 15em;
+    transition: 0.4s;
+}
+
+.input-wrapper input~label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 5px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+}
+
+.input-wrapper input:focus~label, .has-content.input-wrapper input~label {
+    top: -16px;
+    font-size: 12px;
+    color: #000;
+    transition: 0.3s;
+}
+
+.input-wrapper.message {
+    margin-top: 2em;
+}
+
+.input-wrapper.message textarea {
+    border: 1px solid #ccc;
+    padding: 14px;
+    transition: 0.4s;
+    background: transparent;
+    height: 8em;
+    width: 100%;
+    resize: none;
+    margin-top: 0.5em;
+    font-size: 1em;
+	outline: 0;
+	transition: 0.4s;
+}
+
+.input-wrapper.message label {
+    color: #aaa;
+	transition: 0.4s;
+}
+
+.input-wrapper.message textarea:focus {
+    background-color: #fff;
+	border: 2px solid #ffcc00;
+}
+
+.input-wrapper.message textarea.has-content {
+border: 2px solid #ffcc00;
+background-color: #fff;
+}
+
+.input-wrapper.message label.has-content {
+    color: #000;
+}
+
+.input-wrapper.message input~label {
+    top: -2em;
+}
+
+.detail {
+	background-color: #fff!important;
+	min-height: calc(60vh);
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 4.75em;
+	padding: 0;
+}
+
+.detail h1 {
+	font-size: 3em;
+font-weight: 600;
+}
+
+.detail .call-to-action:hover, .detail .call-to-action:focus  {
+	color: #000;
+	background-color: #e4b808;
+	border: none;
+}
+
+.detail-content {
+	padding: 0;
+	align-items: baseline;
+	min-height: 0;
+	margin: 0 auto 2em auto;
+	max-width: 70em;
+}
+.detail-summary {
+	background-color: #fff!important;
+	min-height: 0;
+	padding: 0;
+	min-height: 15em;
+	margin: 2em 0;
+}
+.summary {
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 40em;
+    grid-gap: 16px;
+}
+.summary .project {
+	padding: 1em;
+}
+.summary .title {
+	margin: 0;
+	font-weight: 600;
+}
+.summary .desc {
+	margin-top: 0.3em;
+
+}
+.detail-content img {
+	width: 100%;
+}
+
+.interesse {
+	background-color: #ffcc00;
+	min-height: 30vh;
+	flex-direction: column;
+}
+
+.interesse .call-to-action {
+	background-color: #000;
+	color: #fff;
+	margin-top: 0.5em;
+}
+.interesse h3 {
+	font-size: 1.7em;
 }

@@ -76,7 +76,7 @@ button {
 }
 
 .layout li.active svg {
-	transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 .grid-controls ul.lay-out {
@@ -180,7 +180,7 @@ button {
 }
 
 .grid-item:hover {
-	cursor: zoom-in;
+    cursor: zoom-in;
 }
 
 .grid-item:hover>section, .grid-item:focus>section {
@@ -317,16 +317,16 @@ button {
 .start-slideshow, .stop-slideshow {
     padding: 0.5em 1.6em;
     border: 1px solid #000;
-	color: #000;
-	border-radius: 2px;
-	min-width: 12em;
+    color: #000;
+    border-radius: 2px;
+    min-width: 12em;
     display: flex;
     justify-content: center;
-	align-items: center;
+    align-items: center;
 }
 
 .start-slideshow svg, .stop-slideshow svg {
-	margin-right: 7px;
+    margin-right: 7px;
 }
 
 .start-slideshow.hidden, .stop-slideshow.hidden {
@@ -337,7 +337,7 @@ button {
     display: flex;
     align-items: center;
     margin-right: 1em;
-	width: 3em;
+    width: 3em;
 }
 
 .slider-like-button span {
@@ -364,6 +364,11 @@ button {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1
+    /* Hide text */
+    text-indent: 200%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .loader.active {
