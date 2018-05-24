@@ -88,8 +88,8 @@ Op deze pagina staat een formulier waarin de gebruiker zich kan aanmelden voor d
 # Veranderingen na feedback uit admin
 
 ## Gebruikers aangescherpt
-Marijn - Motorisch gehandicapte die het liefst alleen zijn toetsenbord gebruikt om te navigeren.
-Simon - Een tweede jaars CMD student die zich orienteert op een minor. Doet veel aan design maar lijkt het ook vet om te coderen. Hij heeft nog een maand de tijd om een Minor te kiezen en wilt meer te weten komen over de minor webdev en of deze bij hem past.
+- Marijn - Motorisch gehandicapte die het liefst alleen zijn toetsenbord gebruikt om te navigeren.
+- Simon - Een tweede jaars CMD student die zich orienteert op een minor. Doet veel aan design maar lijkt het ook vet om te coderen. Hij heeft nog een maand de tijd om een Minor te kiezen en wilt meer te weten komen over de minor webdev en of deze bij hem past.
 
 ## User Scenario's aangepast
 
