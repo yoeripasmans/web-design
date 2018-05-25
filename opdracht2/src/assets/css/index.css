@@ -544,6 +544,9 @@ details[open] summary~* {
 .grid-item:hover section, .grid-item a:focus section {
     opacity: 1;
 }
+.grid-item a:focus section {
+		border: 2px solid #43A0F8;
+}
 
 .grid-item:hover .thumb, .grid-item a:focus .thumb {
     filter: blur(2px);
@@ -577,6 +580,13 @@ details[open] summary~* {
     font-weight: 400;
     color: #8a8a8a;
 }
+.categories button {
+		outline: 0;
+}
+
+.categories li:hover, .categories button:focus {
+	color: #000;
+}
 .categories li:last-child {
     margin-right: 0;
 
@@ -606,6 +616,11 @@ input[type=submit] {
     width: 15em;
     font-size: 1em;
     font-weight: 600;
+	outline: 0;
+}
+
+input[type=submit]:hover, input[type=submit]:focus {
+background-color: #e4b808;
 }
 
 .input-wrapper {
@@ -719,6 +734,12 @@ font-weight: 600;
 	color: #000;
 	background-color: #e4b808;
 	border: none;
+}
+
+.interesse .call-to-action.black:hover, .interesse .call-to-action.black:focus  {
+	color: #000;
+	background-color: transparent;
+	border: 2px solid #000;
 }
 
 .detail-content {
